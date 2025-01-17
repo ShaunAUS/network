@@ -16,14 +16,16 @@ public class ResourceCloseMainV4 {
 
     private static void logic() throws CloseException, CallException {
 
-        try (ResourceV2 resourceV1 = new ResourceV2("resource1");
-             ResourceV2 resourceV2 = new ResourceV2("resource2")) {
+        //ResourceV2는 AutoCloseable을 구현하고 있기 때문에 try-with-resources 사용 가능, 자동으로 자원 닫힘
+        //!!순서 역순으로 닫히고, 메인예외 안에 서브 예외숨김 처리까지 자동!!
+        try (ResourceV2 resource1 = new ResourceV2("resource1");
+             ResourceV2 resource2 = new ResourceV2("resource2")) {
 
-            resourceV1.call();
+            resource1.call();
 
             //자원을 닫을때 생기는 에러(서브에러) 는 이 메인에러 안으로 들어간다!!
             //그래서 자원닫을때 에러 closeException이 아니라 callException이 발생한다
-            resourceV2.callEx();
+            resource2.callEx();
         } catch (CallException e) {
             System.out.println("ex:" + e);
             throw e;
