@@ -15,6 +15,8 @@ public class ClientV5 {
     public static void main(String[] args) throws IOException {
         log("클라이언트 시작");
 
+        //try with resources
+        //Socket, DataInputStream, DataOutputStream 내부적으로 autoclosable 구현 그래서 try문에서 에러터지면 자동으로 리소스닫힘
         try(Socket socket = new Socket("localhost", PORT);
             DataInputStream input = new DataInputStream(socket.getInputStream());
             DataOutputStream output = new DataOutputStream(socket.getOutputStream())) {
