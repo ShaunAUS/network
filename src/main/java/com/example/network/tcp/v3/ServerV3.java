@@ -1,7 +1,5 @@
-package com.example.network.v3;
+package com.example.network.tcp.v3;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
