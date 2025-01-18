@@ -22,10 +22,12 @@ public class ResourceCloseMainV4 {
              ResourceV2 resource2 = new ResourceV2("resource2")) {
 
             resource1.call();
+            resource2.callEx(); // 여기서 예외터치면 -> 자원정리 -> catch순으로 실행됨!
 
             //자원을 닫을때 생기는 에러(서브에러) 는 이 메인에러 안으로 들어간다!!
             //그래서 자원닫을때 에러 closeException이 아니라 callException이 발생한다
-            resource2.callEx();
+            //resource2.close(); AutoCloseable로  자동으로 처리
+            //resource1.close();  AutoCloseable로  자동으로 처리
         } catch (CallException e) {
             System.out.println("ex:" + e);
             throw e;
