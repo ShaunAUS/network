@@ -1,7 +1,6 @@
-package com.example.network.chat.server.command;
+package com.example.network.chat.server;
 
-import com.example.network.chat.server.Session;
-import com.example.network.chat.server.SessionManager;
+import com.example.network.chat.server.command.CommandManager;
 
 import java.io.IOException;
 
