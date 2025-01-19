@@ -1,8 +1,5 @@
 package com.example.network.chat.server;
 
-import com.example.network.chat.server.command.CommandManagerV1;
-import com.example.network.chat.server.command.CommandManagerV2;
-
 import java.io.IOException;
 
 public class ServerMain {
@@ -14,7 +11,9 @@ public class ServerMain {
         SessionManager sessionManager = new SessionManager();
 
         //CommandManagerV1 commandManager = new CommandManagerV1(sessionManager);
-        CommandManagerV2 commandManager = new CommandManagerV2(sessionManager);
+        //CommandManagerV2 commandManager = new CommandManagerV2(sessionManager);
+        //CommandManagerV3 commandManager = new CommandManagerV3(sessionManager);
+        CommandManagerV4 commandManager = new CommandManagerV4(sessionManager);
 
 
         Server server = new Server(PORT, commandManager, sessionManager);
