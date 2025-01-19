@@ -20,20 +20,20 @@ public class CommandManagerV2 implements CommandManager {
     @Override
     public void execute(String totalMessage, Session session) throws IOException {
 
-        if(totalMessage.startsWith("/exit")) {
+        if (totalMessage.startsWith("/exit")) {
             throw new IOException("exit");
         }
 
-        if(totalMessage.startsWith("/users")) {
-           List<String> usernames = sessionManager.getAllUsername();
-           StringBuilder sb = new StringBuilder();
-           sb.append("현재 접속자 목록 : ").append(usernames.size()).append("명\n");
-              for (String username : usernames) {
+        if (totalMessage.startsWith("/users")) {
+            List<String> usernames = sessionManager.getAllUsername();
+            StringBuilder sb = new StringBuilder();
+            sb.append("현재 접속자 목록 : ").append(usernames.size()).append("명\n");
+            for (String username : usernames) {
                 sb.append(" - ").append(username).append("\n");
-              }
+            }
 
-              //요청한 유저에게만 보이도록
-              session.send(sb.toString());
+            //요청한 유저에게만 보이도록
+            session.send(sb.toString());
         }
 
 
