@@ -30,6 +30,7 @@ public class SessionV6 implements Runnable {
         try {
             while (true) {
                 // 클라이언트로부터 문자 받기
+                // 여기서 대기하다가 서버종료가 일어나면 익셉션 터짐
                 String received = input.readUTF();
                 log("client -> server: " + received);
 
@@ -50,8 +51,9 @@ public class SessionV6 implements Runnable {
         }
     }
 
-    // 하나의 세션,소켓 자원 죵료
-    // 세션 종료시, 서버 종료시 동시에 호출될 수 있다.
+    // 클라가 종료시, 서버 종료시 동시에 호출될 수 있다. 그래서 synchronized
+    //이건 try 구문이 끝나서가아닌 다른 누군가에 의한 종료
+    // 클라가 종료하건, 서버가 종료하더 이걸로 통일, autoCloseable 아님
     public synchronized void close() {
         if (closed) {
             return;

@@ -12,12 +12,12 @@ public class SessionManagerV6 {
         sessions.add(session);
     }
 
+    //클라에서 종료
     public synchronized void remove(SessionV6 session) {
         sessions.remove(session);
     }
 
     //서버에서 종료할때
-    // 모든 세션을 종료
     public synchronized void closeAll() {
         for (SessionV6 session : sessions) {
             session.close();

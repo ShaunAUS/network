@@ -29,7 +29,7 @@ public class ServerV6 {
                 Socket socket = serverSocket.accept(); // 블로킹, 여기서 shutdownHook이 실행되어 종료되면 예외터짐
                 log("소켓 연결: " + socket);
 
-                //스레드
+                //스레드, 클라이언트 상대할 담당자 배치
                 SessionV6 session = new SessionV6(socket, sessionManager);
                 Thread thread = new Thread(session);
                 thread.start();
@@ -41,7 +41,7 @@ public class ServerV6 {
 
     }
 
-    //서버에서 종료 할때
+    //서버에서 종료 할때 자동 실행
     static class ShutdownHook implements Runnable {
         private final ServerSocket serverSocket;
         private final SessionManagerV6 sessionManager;
@@ -55,6 +55,7 @@ public class ServerV6 {
         public void run() {
             log("shutdownHook 실행");
             try {
+                //전체 세션(클라 담당자) 종료
                 sessionManager.closeAll();
                 serverSocket.close();
 
