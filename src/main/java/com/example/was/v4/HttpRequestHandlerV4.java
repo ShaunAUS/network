@@ -1,8 +1,8 @@
 package com.example.was.v4;
 
 
-import com.example.was.httpserver.HttpRequest;
-import com.example.was.httpserver.HttpResponse;
+import com.example.was.httpserver.reqres.HttpRequest;
+import com.example.was.httpserver.reqres.HttpResponse;
 
 import java.io.BufferedReader;
 import java.io.IOException;

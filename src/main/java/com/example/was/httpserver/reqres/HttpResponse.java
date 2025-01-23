@@ -1,4 +1,4 @@
-package com.example.was.httpserver;
+package com.example.was.httpserver.reqres;
 
 import java.io.PrintWriter;
 
